@@ -1,12 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import Layout from '../../layout/layout';
-
-interface AppLayoutProps {
-    children: React.ReactNode;
-}
+import React from 'react';
+import ClientLayout from './client-layout';
 
 export const metadata = {
     title: 'Sacco Financial decision LLM',
@@ -26,18 +19,6 @@ export const metadata = {
     }
 };
 
-export default function AppLayout({ children }: AppLayoutProps) {
-    const router = useRouter();
-    const pathname = usePathname();
-
-    useEffect(() => {
-        const token = sessionStorage.getItem('token');
-        const userId = sessionStorage.getItem('userId');
-
-        if (!token || !userId) {
-            router.replace('/auth/login');
-        }
-    }, [pathname]);
-
-    return <Layout>{children}</Layout>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+    return <ClientLayout>{children}</ClientLayout>;
 }
