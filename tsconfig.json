@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/(main)/dashboard/page.jsx", "app/(main)/dashboard/page.jsx", "app/(main)/statements/chat/[id].jsx", "app/(full-page)/auth/login/page.jsx", "app/(full-page)/auth/register/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

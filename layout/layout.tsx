@@ -9,7 +9,7 @@ import AppFooter from './AppFooter';
 import AppSidebar from './AppSidebar';
 import AppTopbar from './AppTopbar';
 import AppConfig from './AppConfig';
-import { LayoutContext } from './context/layoutcontext';
+import { LayoutContext, LayoutProvider } from './context/layoutcontext';
 import { PrimeReactContext } from 'primereact/api';
 import { ChildContainerProps, LayoutState, AppTopbarRef } from '@/types';
 import { usePathname, useSearchParams } from 'next/navigation';
