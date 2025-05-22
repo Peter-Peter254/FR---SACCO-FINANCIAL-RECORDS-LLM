@@ -56,13 +56,16 @@ const DocumentUploadForm = () => {
 
             const token = sessionStorage.getItem('token');
 
-            const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upload`, {
+            const uploadRes = await fetch(
+              'https://llm-sacco-financial-records-backend-production.up.railway.app/api/v1/upload',
+              {
                 method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${token}`,
                 },
                 body: formData,
-            });
+              }
+            );
 
             const result = await uploadRes.json();
 
