@@ -120,7 +120,7 @@ const ChatPage = () => {
                 }}
             >
                 <div className="flex justify-between items-center mb-4" style={{ lineHeight: 1 }}>
-                    <div className="text-lg font-semibold flex items-center">Explore:&nbsp;{docName || id}</div>
+                    <div className="text-lg font-semibold flex items-center">Chat with Our Financial Reports</div>
                     <div className="flex items-center gap-2">
                         <Button icon="pi pi-trash" className="p-button-sm p-button-text p-button-danger" onClick={clearChat} label="Clear" />
                         <Button icon="pi pi-download" className="p-button-sm p-button-text p-button-secondary" onClick={exportChat} label="Export" />
