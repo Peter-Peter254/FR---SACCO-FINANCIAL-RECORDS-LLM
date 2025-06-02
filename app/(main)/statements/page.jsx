@@ -10,6 +10,7 @@ import { ApiService } from '@/services/apiServices';
 
 const FinancialStatementsTable = () => {
     const [statements, setStatements] = useState([]);
+    const [loading, setLoading] = useState(true); // NEW
     const router = useRouter();
 
     useEffect(() => {
@@ -19,6 +20,8 @@ const FinancialStatementsTable = () => {
                 setStatements(data);
             } catch (err) {
                 console.error('Error fetching documents:', err.message);
+            } finally {
+                setLoading(false); 
             }
         };
 
@@ -33,7 +36,9 @@ const FinancialStatementsTable = () => {
         router.push(`/statements/chat/${rowData.id}`);
     };
 
-    const viewButtonTemplate = (rowData) => <Button icon="pi pi-eye" label="View" className="p-button-sm p-button-text" onClick={() => handleViewFile(rowData)} />;
+    const viewButtonTemplate = (rowData) => (
+        <Button icon="pi pi-eye" label="View" className="p-button-sm p-button-text" onClick={() => handleViewFile(rowData)} />
+    );
 
     const chatButtonTemplate = (rowData) => {
         if (rowData.status !== 1) {
@@ -49,7 +54,13 @@ const FinancialStatementsTable = () => {
 
     return (
         <div className="card">
-            <DataTable value={statements} responsiveLayout="scroll" className="p-datatable-gridlines">
+            <DataTable
+                value={statements}
+                loading={loading} // NEW
+                responsiveLayout="scroll"
+                className="p-datatable-gridlines"
+                emptyMessage={loading ? 'Loading...' : 'No records found'} 
+            >
                 <Column field="year" header="Year" style={{ minWidth: '8rem' }} />
                 <Column field="name" header="Sacco" style={{ minWidth: '12rem' }} />
                 <Column field="file_url" header="File" body={(row) => row.file_url.split('/').pop()} style={{ minWidth: '14rem' }} />
