@@ -56,14 +56,16 @@ const DocumentUploadForm = () => {
 
             const token = sessionStorage.getItem('token');
 
-            //hard code temporarirly to avoid browser blocked issues
-            const uploadRes = await fetch('https://llm-sacco-financial-records-backend-production.up.railway.app/api/v1/upload/', {
+            const uploadRes = await fetch(
+              'https://llm-sacco-financial-records-backend-production.up.railway.app/api/v1/upload',
+              {
                 method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${token}`,
                 },
                 body: formData,
-            });
+              }
+            );
 
             const result = await uploadRes.json();
 
